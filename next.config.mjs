@@ -1,14 +1,13 @@
-import type { NextConfig } from 'next';
-
 const repoName = 'dontforget';
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: 'export',
   basePath: `/${repoName}`,
   assetPrefix: `/${repoName}/`,
   images: {
-    unoptimized: true
-  }
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
