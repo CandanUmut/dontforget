@@ -1,18 +1,18 @@
 import { EvidenceTier } from '@/data/types';
 
 export const SITE = {
-  title: 'Don’t Forget: Epstein Accountability Archive',
-  description:
-    'A documented, evidence-tiered record focused on accountability, survivor dignity, transparency, and prevention.',
-  disclaimer: 'Appearing in records or documents does not establish criminal wrongdoing or legal guilt.',
+  title: 'The Epstein Files',
+  description: 'A documented investigation into systemic abuse, institutional failure, and the fight for accountability.',
+  disclaimer:
+    'This website presents documented facts from court records, government releases, and credible journalism. Presence in documents does not establish guilt.',
   sensitiveWarning:
-    'Content warning: this project documents sexual abuse, trafficking, suicide, and institutional failure.'
+    'Sensitive content: sexual abuse, trafficking, institutional failure, and suicide. Reader discretion is advised.'
 };
 
-export const evidenceConfig: Record<EvidenceTier, { label: string; icon: string; color: string }> = {
-  verified: { label: 'Verified', icon: '✅', color: 'text-verified border-verified/40' },
-  alleged: { label: 'Alleged', icon: '📄', color: 'text-alleged border-alleged/40' },
-  unresolved: { label: 'Unresolved', icon: '❓', color: 'text-unresolved border-unresolved/40' }
+export const evidenceConfig: Record<EvidenceTier, { label: string; icon: string; color: string; bg: string }> = {
+  verified: { label: 'Verified', icon: '✅', color: 'text-verified border-verified/60', bg: 'bg-verified/10' },
+  alleged: { label: 'Alleged', icon: '📄', color: 'text-alleged border-alleged/60', bg: 'bg-alleged/10' },
+  unresolved: { label: 'Unresolved', icon: '❓', color: 'text-unresolved border-unresolved/60', bg: 'bg-unresolved/10' }
 };
 
 export const navItems = [

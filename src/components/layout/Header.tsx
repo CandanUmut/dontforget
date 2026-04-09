@@ -11,18 +11,18 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-charcoal/90 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3" aria-label="Primary navigation">
-        <Link href="/" className="font-display text-lg text-heading">
-          Don’t Forget
+    <header className="sticky top-0 z-40 border-b border-divider bg-charcoal/85 backdrop-blur">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3" aria-label="Primary navigation">
+        <Link href="/" className="font-display text-2xl text-heading">
+          The Epstein Files
         </Link>
-        <button className="md:hidden" aria-label="Toggle navigation" onClick={() => setOpen((v) => !v)}>
+        <button className="rounded p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent md:hidden" aria-label="Toggle navigation" onClick={() => setOpen((v) => !v)}>
           {open ? <X /> : <Menu />}
         </button>
         <ul className="hidden gap-4 text-sm md:flex">
           {navItems.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className={pathname === item.href ? 'text-accent' : 'text-body hover:text-white'}>
+              <Link href={item.href} className={pathname === item.href ? 'text-accent underline' : 'text-body hover:text-heading'}>
                 {item.label}
               </Link>
             </li>
@@ -30,10 +30,10 @@ export function Header() {
         </ul>
       </nav>
       {open ? (
-        <ul className="space-y-2 border-t border-white/10 px-4 py-3 text-sm md:hidden">
+        <ul className="space-y-3 border-t border-divider bg-elevated px-4 py-4 text-lg md:hidden">
           {navItems.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} onClick={() => setOpen(false)}>
+              <Link href={item.href} onClick={() => setOpen(false)} className="block py-1">
                 {item.label}
               </Link>
             </li>

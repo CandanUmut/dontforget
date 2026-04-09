@@ -1,4 +1,6 @@
 import { allSources } from '@/data/sources';
+import { people } from '@/data/people';
+import { timelineEvents } from '@/data/timeline';
 
 export const formatDate = (value: string): string => {
   const date = new Date(value);
@@ -6,16 +8,16 @@ export const formatDate = (value: string): string => {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 };
 
-export const yearsCovered = () => {
-  const years = [2005, 2026];
-  return `${years[0]}-${years[1]}`;
-};
+export const coreStats = [
+  { label: 'survivors compensated', value: 135, suffix: '+' },
+  { label: 'pages released by DOJ', value: 3.5, suffix: 'M+' },
+  { label: 'years of documented abuse', value: 20, suffix: '+' },
+  { label: 'named associates in documents', value: people.length, suffix: '+' }
+];
 
-export const coreStats = {
-  knownVictimClaims: '225+',
-  yearsOfAbuseDocumented: '~2 decades',
-  pagesReleased: '3.5M',
-  associatesDocumented: '150+ names unsealed'
+export const yearsCovered = () => {
+  const years = timelineEvents.map((event) => Number(event.date.slice(0, 4))).filter(Boolean);
+  return `${Math.min(...years)}-${Math.max(...years)}`;
 };
 
 export const sourceCount = allSources.length;
