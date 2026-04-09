@@ -5,13 +5,13 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 
 export function PageShell({ title, intro, children }: { title: string; intro: string; children: ReactNode }) {
   return (
-    <main className="mx-auto max-w-6xl space-y-6 px-4 py-8">
+    <section className="mx-auto max-w-7xl space-y-6 px-4 py-8">
       <Breadcrumbs />
       <div className="card p-4 text-sm text-alleged">{SITE.sensitiveWarning}</div>
       <div className="space-y-3">
-        <h1 className="font-display text-4xl text-heading">{title}</h1>
-        <p className="max-w-3xl text-body/85">{intro}</p>
-        <p className="text-sm text-body/70">{SITE.disclaimer}</p>
+        <h1 className="font-display text-5xl text-heading">{title}</h1>
+        <p className="max-w-4xl text-body">{intro}</p>
+        <p className="text-sm text-body/80">{SITE.disclaimer}</p>
       </div>
       {children}
       <div className="card p-4">
@@ -23,6 +23,6 @@ export function PageShell({ title, intro, children }: { title: string; intro: st
           section for reporting resources and actionable safeguards.
         </p>
       </div>
-    </main>
+    </section>
   );
 }

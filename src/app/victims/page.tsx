@@ -1,34 +1,42 @@
 import { Metadata } from 'next';
 import { PageShell } from '@/components/sections/PageShell';
 import { supportResources, victimStats, victimStories } from '@/data/victims';
-import { EvidenceBadge } from '@/components/ui/EvidenceBadge';
 import { SourceList } from '@/components/ui/SourceList';
+import { ContentWarning } from '@/components/ui/ContentWarning';
 
-export const metadata: Metadata = { title: 'Victims | Don’t Forget', description: 'Survivor-centered documentation handled with dignity and care.' };
+export const metadata: Metadata = { title: 'Victims | The Epstein Files', description: 'Survivor-centered testimony and support resources.' };
 
 export default function VictimsPage() {
   return (
-    <PageShell title="Victims’ Voices" intro="This section centers survivor testimony with dignity, citation, and zero sensationalism.">
-      <section className="card grid gap-2 p-4 text-sm md:grid-cols-2">
-        {Object.entries(victimStats).map(([k, v]) => <p key={k}><strong>{k.replaceAll(/([A-Z])/g, ' $1')}:</strong> {v}</p>)}
-      </section>
-      <div className="space-y-4">
-        {victimStories.map((story) => (
-          <article key={story.id} className="card space-y-2 p-4">
-            <h2 className="font-display text-2xl">{story.publicName ?? 'Unnamed survivor(s)'}</h2>
-            <EvidenceBadge tier={story.evidenceTier} />
-            <p>{story.description}</p>
-            <p>{story.experience}</p>
-            <SourceList sources={story.sources} />
-          </article>
-        ))}
-      </div>
-      <section className="card p-4">
-        <h3 className="font-display text-xl">Support resources</h3>
-        <ul className="mt-2 space-y-1 text-sm">
-          {supportResources.map((r) => <li key={r.name}><a className="text-accent underline" href={r.url} target="_blank" rel="noreferrer">{r.name}</a> · {r.contact}</li>)}
-        </ul>
-      </section>
+    <PageShell title="Their Stories" intro="This page centers the experiences of survivors as documented in court records and credible reporting.">
+      <ContentWarning>
+        <section className="card p-4 text-sm">
+          <p className="font-section text-2xl text-heading">Scale and compensation</p>
+          <div className="mt-2 grid gap-2 md:grid-cols-2">
+            {Object.entries(victimStats).map(([key, value]) => <p key={key}><strong>{key.replace(/([A-Z])/g, ' $1')}:</strong> {value}</p>)}
+          </div>
+        </section>
+
+        <div className="space-y-4">
+          {victimStories.map((story) => (
+            <article key={story.id} className="card p-4">
+              <h2 className="font-section text-2xl text-heading">{story.name ?? 'Unnamed survivor(s)'}</h2>
+              <p className="font-mono text-xs text-accent">{story.anonymous ? 'Anonymous testimony cluster' : `Age at time: ${story.ageAtTime ?? 'N/A'}`}</p>
+              <p className="mt-2">{story.testimony}</p>
+              <p className="mt-2 text-sm text-body">{story.context}</p>
+              <SourceList sources={[story.source]} />
+            </article>
+          ))}
+        </div>
+
+        <section className="card p-4">
+          <h3 className="font-section text-2xl text-heading">International victims and support</h3>
+          <p className="mt-2 text-body">The source record references cross-border trafficking pathways including Turkey, Czech Republic, Lithuania, and broader international routes.</p>
+          <ul className="mt-3 space-y-1 text-sm">
+            {supportResources.map((resource) => <li key={resource.name}><a className="text-accent underline" href={resource.url} target="_blank" rel="noreferrer">{resource.name}</a> · {resource.contact}</li>)}
+          </ul>
+        </section>
+      </ContentWarning>
     </PageShell>
   );
 }

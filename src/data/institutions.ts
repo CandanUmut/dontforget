@@ -1,92 +1,30 @@
-import { InstitutionalFailure, TransparencyItem, PreventionItem } from './types';
+import { InstitutionalFailure, PreventionItem, TimelineEvent } from './types';
+
+const s = [{ name: 'README documented record', date: '2026-04-09', type: 'journalism' as const }];
 
 export const institutionalFailures: InstitutionalFailure[] = [
-  {
-    id: '2006-grand-jury',
-    period: '2006',
-    description: 'Grand jury heard limited testimony and produced a single solicitation charge despite broader police recommendations.',
-    whatHappened: 'Proceeding reportedly lasted less than four hours and included only two alleged underage victims.',
-    legalExpectation: 'Charging decisions should reflect full investigative record and victim-protective handling.',
-    responsibleParties: ['Palm Beach State Attorney office'],
-    unresolvedQuestions: 'Why were recommended felony charges not advanced?',
-    evidenceTier: 'verified',
-    sources: [{ name: 'Unsealed transcript reporting', date: '2006; 2024' }]
-  },
-  {
-    id: '2008-npa-failure',
-    period: '2007-2008',
-    description: 'Secret NPA gave broad immunity including unnamed co-conspirators and bypassed victim notification.',
-    whatHappened: 'Federal prosecutors negotiated sealed deal with defense while victims were excluded.',
-    legalExpectation: 'Crime Victims’ Rights Act values timely victim notice and participation.',
-    responsibleParties: ['U.S. Attorney office S.D. Florida'],
-    unresolvedQuestions: 'Which potential co-conspirators benefited from blanket immunity?',
-    evidenceTier: 'verified',
-    sources: [{ name: 'NPA document; DOJ OPR', date: '2007; 2020' }]
-  },
-  {
-    id: '2019-custody-failure',
-    period: '2019',
-    description: 'MCC staff failures included missed checks, false logs, and camera deficiencies on night of death.',
-    whatHappened: 'Guards skipped rounds for ~8 hours and falsified records.',
-    legalExpectation: 'Suicide-watch and high-risk detainee protocols require frequent checks and proper monitoring.',
-    responsibleParties: ['MCC New York staff', 'BOP supervision'],
-    unresolvedQuestions: 'How did repeated known deficiencies remain unresolved?',
-    evidenceTier: 'verified',
-    sources: [{ name: 'DOJ OIG', date: '2023-06-27' }]
-  },
-  {
-    id: '2026-release-failure',
-    period: '2025-2026',
-    description: 'Transparency Act implementation saw missed deadlines, heavy redactions, and blacked-out documents.',
-    whatHappened: 'Released sets contained large unreadable sections despite statutory transparency mandate.',
-    legalExpectation: 'Public law required searchable and downloadable release of unclassified records.',
-    responsibleParties: ['DOJ records release offices'],
-    unresolvedQuestions: 'Which withholdings are lawful victim protection versus avoidable secrecy?',
-    evidenceTier: 'unresolved',
-    sources: [{ name: 'Congressional statements; DOJ portal', date: '2025-2026' }]
-  }
+  { id: 'pb-grand-jury', title: 'Palm Beach Grand Jury framing failure', date: '2006-07-19', institution: 'Palm Beach State Attorney / Grand Jury', whatHappened: 'Police-recommended child-sex charges were narrowed to one solicitation count in a short proceeding with limited testimony.', whatShouldHaveHappened: 'Full charging review based on minor-victim evidence and child-protection standards.', whoWasResponsible: ['Barry Krischer', 'State prosecution leadership'], consequence: 'Major criminal exposure was reduced and delayed federal accountability.', evidenceTier: 'verified', sources: s, stillUnresolved: ['Why minor victims were framed as participants in prostitution.', 'Why broader counts were excluded.'] },
+  { id: 'npa-2007', title: 'Secret Non-Prosecution Agreement', date: '2007-2008', institution: 'U.S. Attorney Office (S.D. Fla.)', whatHappened: 'A broad immunity deal protected Epstein plus named and unnamed co-conspirators while victims were not informed.', whatShouldHaveHappened: 'Victim notification and prosecution based on prepared federal indictment.', whoWasResponsible: ['Alexander Acosta office', 'Federal prosecution leadership'], consequence: 'Unknown co-conspirator exposure was extinguished for years.', evidenceTier: 'verified', sources: s, stillUnresolved: ['Scope and intent behind unnamed immunity language.', 'Why draft 60-count indictment was shelved.'] },
+  { id: 'work-release', title: 'Custody and work-release leniency', date: '2008-2009', institution: 'Palm Beach corrections and judicial oversight', whatHappened: 'Epstein served less than 13 months and spent extensive daytime hours outside custody under work release.', whatShouldHaveHappened: 'Sentence conditions aligned with risk profile and victim safety.', whoWasResponsible: ['Local jail administration', 'Sentence oversight officials'], consequence: 'Public trust collapse and evidence of unequal treatment by wealth/status.', evidenceTier: 'verified', sources: s, stillUnresolved: ['Who approved operational deviations during work release.'] },
+  { id: 'opr-2020', title: 'DOJ OPR accountability gap', date: '2020-11', institution: 'DOJ Office of Professional Responsibility', whatHappened: 'Report found poor judgment in NPA handling but imposed no direct consequences.', whatShouldHaveHappened: 'Meaningful accountability and corrective standards.', whoWasResponsible: ['DOJ professional responsibility leadership'], consequence: 'Institutional lessons remained weakly enforced.', evidenceTier: 'verified', sources: s, stillUnresolved: ['Why findings did not trigger sanctions.'] },
+  { id: 'mcc-2019', title: 'MCC custody failure', date: '2019-08-10', institution: 'MCC New York / BOP', whatHappened: 'Guards skipped checks, falsified records, and surveillance systems failed in critical areas before death in custody.', whatShouldHaveHappened: 'Continuous monitoring, staffing compliance, and reliable recording systems.', whoWasResponsible: ['MCC command chain', 'Assigned SHU officers'], consequence: 'Death in custody and long-term trust collapse.', evidenceTier: 'verified', sources: s, stillUnresolved: ['Full causal chain of camera outages.', 'Accountability for supervisory oversight.'] },
+  { id: 'footage-2025', title: 'Modified surveillance footage dispute', date: '2025', institution: 'Federal records release chain', whatHappened: 'Footage described as raw was reported to contain a missing segment.', whatShouldHaveHappened: 'Complete chain-of-custody disclosure and independent verification.', whoWasResponsible: ['Records custodians'], consequence: 'Further erosion of confidence in official narrative.', evidenceTier: 'unresolved', sources: s, stillUnresolved: ['Reason for missing segment and exact edit history.'] },
+  { id: 'memo-no-client-list', title: '“No client list” DOJ/FBI memo controversy', date: '2025-07', institution: 'DOJ/FBI', whatHappened: 'Memo stated no client list and no credible blackmail evidence; survivors disputed interpretation.', whatShouldHaveHappened: 'Transparent evidentiary basis and external review of conclusions.', whoWasResponsible: ['DOJ leadership', 'FBI review leadership'], consequence: 'Public conflict between memo conclusions and testimony narratives.', evidenceTier: 'unresolved', sources: s, stillUnresolved: ['Which evidence set was excluded or deprioritized.'] },
+  { id: 'release-errors-2026', title: 'DOJ release failures and victim exposure', date: '2026-01', institution: 'DOJ Transparency Act implementation', whatHappened: 'Initial releases reportedly included sensitive victim material and widespread publication mistakes.', whatShouldHaveHappened: 'Robust victim-protection redaction QA before publication.', whoWasResponsible: ['DOJ release program managers'], consequence: 'Re-traumatization risk and bipartisan demand for audit.', evidenceTier: 'verified', sources: s, stillUnresolved: ['Full scale of exposed identities.', 'Whether legal obligations were violated.'] },
+  { id: 'withheld-docs', title: 'Still withheld core documents', date: '2026', institution: 'DOJ/FBI and court secrecy regime', whatHappened: 'Major categories remain withheld or unreadable despite broad release claims.', whatShouldHaveHappened: 'Maximum lawful disclosure with narrow victim-protection redactions.', whoWasResponsible: ['DOJ records authorities'], consequence: 'Key accountability questions remain unanswered.', evidenceTier: 'verified', sources: s, stillUnresolved: ['FBI 302 details', 'Draft 2007 indictment text', 'Prosecution memo rationale', 'Large email corpus from seized systems'] }
 ];
 
-export const transparencyItems: TransparencyItem[] = [
-  {
-    id: 'unsealed-2024',
-    date: '2023-12-18 to 2024-01',
-    description: 'Court-ordered unsealing in Giuffre v. Maxwell exposed thousands of pages and >150 names.',
-    released: '4,553 pages of civil records',
-    withheld: 'Some names remained sealed for safety and legal reasons',
-    actions: 'Catalyzed renewed public scrutiny and congressional focus',
-    evidenceTier: 'verified',
-    sources: [{ name: 'CNN/ABC on Preska order', date: '2023-2024' }]
-  },
-  {
-    id: 'efta-2026',
-    date: '2026-01-30',
-    description: 'DOJ announced release volume of roughly 3.5 million pages plus images and video.',
-    released: '3.5M pages, 180k images, 2k videos (reported)',
-    withheld: 'FBI 302s, grand jury materials, internal charging memos largely obscured',
-    actions: 'Bipartisan criticism and calls for IG review',
-    evidenceTier: 'unresolved',
-    sources: [{ name: 'DOJ release statement; senate letters', date: '2026' }]
-  }
+export const transparencyTimeline: TimelineEvent[] = [
+  { id: 'tt-2018', date: '2018-11-28', title: 'Miami Herald investigation', summary: '“Perversion of Justice” forces reopening pressure.', detail: 'Award-winning investigative journalism resets national scrutiny.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: 'tt-2019-2023', date: '2019-2023', title: 'CVRA litigation and survivor lawsuits', summary: 'Victims challenge secrecy framework and prosecutorial choices.', detail: 'Courtney Wild litigation and civil discovery grow public record.', category: 'transparency', relatedPeopleIds: ['courtney-wild'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: 'tt-2024', date: '2024-01', title: 'Large unsealing order', summary: 'Thousands of pages from Giuffre v. Maxwell unsealed.', detail: 'More than 150 names become public in structured waves.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: 'tt-2025', date: '2025', title: 'Congressional and press escalations', summary: 'Bloomberg email reporting, Oversight releases, and law passage.', detail: 'Transparency Act codifies timeline and format obligations.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: 'tt-2026', date: '2026-01-30', title: '3.5M-page DOJ publication', summary: 'Historic scale release paired with major quality concerns.', detail: 'Audit demands and unresolved withholding categories remain.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' }
 ];
 
 export const preventionItems: PreventionItem[] = [
-  {
-    id: 'pattern-wealth-immunity',
-    pattern: 'Concentrated wealth can distort accountability pathways.',
-    description: 'Case records show prolonged access and deference around powerful networks.',
-    warningSigns: ['Unusual prosecutorial leniency', 'Private legal structures shielding conduct'],
-    actions: ['Mandate transparency audits for extraordinary plea deals', 'Expand survivor rights in pre-charge phases'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'DOJ OPR; CVRA litigation', date: '2020-2021' }]
-  },
-  {
-    id: 'pattern-recruitment',
-    pattern: 'Recruitment pipelines normalized grooming through intermediaries.',
-    description: 'Trial testimony described repeated use of trusted intermediaries to recruit minors.',
-    warningSigns: ['Adults paying teens to recruit peers', 'Isolation in private residences'],
-    actions: ['Youth-targeted grooming education', 'Mandatory reporter training for hospitality staff'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'US v. Maxwell testimony', date: '2021' }]
-  }
+  { id: 'pattern-wealth-shield', title: 'Wealth as legal shield', description: 'Private legal firepower, reputation laundering, and influence delayed consequences.', actions: ['Fund independent victim legal clinics.', 'Require external review for sweetheart non-prosecution deals.', 'Mandate public reporting when major cases are declined.'] },
+  { id: 'pattern-recruitment-pipeline', title: 'Recruitment pipeline mechanics', description: 'Peer recruitment, “massage” framing, and fast reward loops targeted vulnerable youth.', actions: ['Train schools and community orgs on grooming patterns.', 'Create anonymous reporting channels for suspicious recruiter behavior.', 'Monitor repeated cash-for-intimate-contact rumors around minors.'] },
+  { id: 'pattern-institutional-self-protection', title: 'Institutional self-protection', description: 'Agencies prioritized liability management over transparent accountability.', actions: ['Require survivor notification before sealing key plea terms.', 'Strengthen IG authority and consequence pathways.', 'Standardize victim-safe but transparent release protocols.'] },
+  { id: 'pattern-surveillance-control', title: 'Surveillance as coercive power', description: 'Hidden camera infrastructure allegedly enabled intimidation and silence.', actions: ['Aggressively investigate covert recording crimes in trafficking cases.', 'Treat surveillance systems as organized-control evidence, not side issue.', 'Preserve and independently audit digital evidence chains.'] }
 ];

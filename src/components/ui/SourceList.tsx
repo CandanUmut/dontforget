@@ -7,7 +7,7 @@ export function SourceList({ sources }: { sources: Source[] }) {
       <ul className="mt-2 list-disc space-y-1 pl-6">
         {sources.map((source) => (
           <li key={`${source.name}-${source.date}`}>
-            {source.name} ({source.date}){' '}
+            <span className="font-mono text-xs uppercase text-body/60">{source.type}</span> · {source.name} ({source.date}){' '}
             {source.url ? (
               <a href={source.url} className="underline" target="_blank" rel="noreferrer">
                 Link

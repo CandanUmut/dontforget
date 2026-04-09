@@ -1,28 +1,27 @@
 import { Metadata } from 'next';
 import { PageShell } from '@/components/sections/PageShell';
 import { preventionItems } from '@/data/institutions';
-import { EvidenceBadge } from '@/components/ui/EvidenceBadge';
-import { SourceList } from '@/components/ui/SourceList';
 
-export const metadata: Metadata = { title: 'Prevention | Don’t Forget', description: 'Actionable prevention patterns, warning signs, and reporting resources.' };
+export const metadata: Metadata = { title: 'Prevention | The Epstein Files', description: 'Actionable prevention guidance rooted in documented case patterns.' };
 
 export default function PreventionPage() {
   return (
-    <PageShell title="Patterns & Prevention" intro="Forward-looking actions to identify grooming, reduce institutional capture, and improve response.">
+    <PageShell title="Making Sure This Never Happens Again" intro="Forward-looking prevention: warning signs, institutional reforms, and practical actions for people and communities.">
       <div className="space-y-4">
         {preventionItems.map((item) => (
-          <article key={item.id} className="card space-y-2 p-4">
-            <div className="flex items-center justify-between"><h2 className="font-display text-2xl">{item.pattern}</h2><EvidenceBadge tier={item.evidenceTier} /></div>
-            <p>{item.description}</p>
-            <p><strong>Warning signs:</strong> {item.warningSigns.join('; ')}</p>
-            <p><strong>Prevention actions:</strong> {item.actions.join('; ')}</p>
-            <SourceList sources={item.sources} />
+          <article key={item.id} className="card p-4">
+            <h2 className="font-section text-2xl text-heading">{item.title}</h2>
+            <p className="mt-2">{item.description}</p>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+              {item.actions.map((action) => <li key={action}>{action}</li>)}
+            </ul>
           </article>
         ))}
       </div>
       <section className="card p-4 text-sm">
-        <h3 className="font-display text-xl">Report suspected trafficking</h3>
-        <p>U.S. National Human Trafficking Hotline: 888-373-7888 · text 233733.</p>
+        <h3 className="font-section text-2xl text-heading">Resources directory</h3>
+        <p className="mt-2">National Human Trafficking Hotline: 1-888-373-7888 · Text 233733.</p>
+        <p>RAINN Hotline: 800-656-HOPE.</p>
       </section>
     </PageShell>
   );

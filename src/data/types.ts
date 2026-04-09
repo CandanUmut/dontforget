@@ -1,78 +1,85 @@
-export type EvidenceTier = 'verified' | 'alleged' | 'unresolved';
-
 export interface Source {
   name: string;
   date: string;
   url?: string;
+  type: 'court-document' | 'doj-release' | 'congressional' | 'journalism' | 'victim-testimony' | 'public-statement';
 }
 
-export interface BaseClaim {
+export type EvidenceTier = 'verified' | 'alleged' | 'unresolved';
+
+export interface Person {
   id: string;
-  description: string;
+  name: string;
+  category: 'inner-circle' | 'financial' | 'political-us' | 'political-intl' | 'royalty' | 'academic' | 'recruitment' | 'legal-defense';
+  role: string;
+  documentedRelationship: string;
+  connections: Array<{ personId: string; nature: string; documented: boolean }>;
+  publicStatements: Array<{ quote: string; context: string; date: string; source: Source }>;
+  legalStatus: string;
+  keyDocuments: string[];
+  evidenceTier: EvidenceTier;
+  sources: Source[];
+  allegations?: string[];
+  imageDescription?: string;
+}
+
+export interface TimelineEvent {
+  id: string;
+  date: string;
+  title: string;
+  summary: string;
+  detail: string;
+  category: 'background' | 'crime' | 'legal' | 'political' | 'transparency' | 'institutional-failure' | 'victim' | 'death';
+  relatedPeopleIds: string[];
+  relatedLocationIds: string[];
+  evidenceTier: EvidenceTier;
+  sources: Source[];
+  significance: 'critical' | 'major' | 'standard';
+}
+
+export interface Location {
+  id: string;
+  name: string;
+  address?: string;
+  coordinates?: { lat: number; lng: number };
+  type: 'residence' | 'island' | 'ranch' | 'transport' | 'office';
+  documentedPurpose: string;
+  keyEvents: string[];
+  victimTestimonies: string[];
+  fbiFindings?: string[];
   evidenceTier: EvidenceTier;
   sources: Source[];
 }
 
-export type PersonCategory =
-  | 'inner-circle'
-  | 'financial'
-  | 'political-us'
-  | 'political-intl'
-  | 'royalty'
-  | 'academic'
-  | 'recruitment'
-  | 'legal';
-
-export interface Person extends BaseClaim {
-  name: string;
-  role: string;
-  category: PersonCategory;
-  legalStatus: string;
-  publicStatements: string[];
-  connections: Array<{ personId: string; nature: string; sources: Source[] }>;
-}
-
-export interface TimelineEvent extends BaseClaim {
-  date: string;
+export interface InstitutionalFailure {
+  id: string;
   title: string;
-  category: 'legal' | 'political' | 'personal' | 'institutional';
-  relatedPeople: string[];
-  relatedLocations: string[];
-  milestone?: boolean;
-}
-
-export interface LocationEntry extends BaseClaim {
-  name: string;
-  location: string;
-  coordinates: { lat: number; lng: number };
-  documentedPurpose: string;
-  keyEvents: string[];
-  testimonies: string[];
-}
-
-export interface VictimStory extends BaseClaim {
-  publicName: string | null;
-  ageRangeAtTime?: string;
-  experience: string;
-}
-
-export interface InstitutionalFailure extends BaseClaim {
-  period: string;
-  responsibleParties: string[];
-  whatHappened: string;
-  legalExpectation: string;
-  unresolvedQuestions: string;
-}
-
-export interface TransparencyItem extends BaseClaim {
   date: string;
-  released: string;
-  withheld: string;
-  actions: string;
+  institution: string;
+  whatHappened: string;
+  whatShouldHaveHappened: string;
+  whoWasResponsible: string[];
+  consequence: string;
+  evidenceTier: EvidenceTier;
+  sources: Source[];
+  stillUnresolved: string[];
 }
 
-export interface PreventionItem extends BaseClaim {
-  pattern: string;
-  warningSigns: string[];
+export interface VictimTestimony {
+  id: string;
+  name?: string;
+  anonymous: boolean;
+  ageAtTime?: string;
+  testimony: string;
+  context: string;
+  source: Source;
+  relatedLocationIds: string[];
+  relatedPeopleIds: string[];
+}
+
+export interface PreventionItem {
+  id: string;
+  title: string;
+  description: string;
   actions: string[];
 }

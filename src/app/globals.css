@@ -7,25 +7,43 @@
 }
 
 body {
-  @apply bg-charcoal text-body font-body;
+  background: #08080c;
+  color: #e2dfd8;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .grain {
-  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 4px 4px;
+  position: relative;
+}
+
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  opacity: 0.03;
 }
 
 .card {
-  @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm;
+  @apply rounded-xl border border-divider bg-surface shadow-[0_0_40px_rgba(0,0,0,0.3)] transition;
 }
 
-@media print {
-  nav, footer, .no-print {
-    display: none !important;
-  }
+.card:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+}
 
-  body {
-    background: white;
-    color: black;
+.text-heading { color: #e2dfd8; }
+.text-body { color: #8a8693; }
+.font-display { font-family: var(--font-playfair), serif; }
+.font-section { font-family: var(--font-libre), serif; }
+.font-mono { font-family: var(--font-mono), monospace; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

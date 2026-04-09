@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { PageShell } from '@/components/sections/PageShell';
 import { SourcesClient } from '@/components/sections/SourcesClient';
 
-export const metadata: Metadata = { title: 'Sources | Don’t Forget', description: 'Searchable source database used across this project.' };
+export const metadata: Metadata = { title: 'Sources | The Epstein Files', description: 'Searchable source database used across this project.' };
 
 export default function SourcesPage() {
   return (

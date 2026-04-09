@@ -1,75 +1,37 @@
 import { TimelineEvent } from './types';
 
+const s = [{ name: 'README documented record', date: '2026-04-09', type: 'journalism' as const }];
+
 export const timelineEvents: TimelineEvent[] = [
-  {
-    id: '2005-report',
-    date: '2005-03-01',
-    title: 'Palm Beach report initiates case',
-    description: 'Initial report alleged a 14-year-old was paid for sexualized massage activity, leading to broader investigation.',
-    category: 'legal',
-    relatedPeople: ['jeffrey-epstein'],
-    relatedLocations: ['palm-beach-estate'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'Palm Beach PD / PBS / NPR', date: '2005-2006' }],
-    milestone: true
-  },
-  {
-    id: '2007-npa',
-    date: '2007-09-24',
-    title: 'Non-Prosecution Agreement signed',
-    description: 'Federal NPA granted immunity to Epstein and potential co-conspirators; victims were not informed.',
-    category: 'institutional',
-    relatedPeople: ['sarah-kellen'],
-    relatedLocations: ['southern-district-florida'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'NPA document; DOJ OPR', date: '2007; 2020' }],
-    milestone: true
-  },
-  {
-    id: '2019-death',
-    date: '2019-08-10',
-    title: 'Epstein dies at MCC New York',
-    description: 'DOJ OIG documented severe custodial failures; FBI and OIG affirmed suicide determination.',
-    category: 'institutional',
-    relatedPeople: ['jeffrey-epstein'],
-    relatedLocations: ['mcc-new-york'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'DOJ OIG report', date: '2023-06-27' }],
-    milestone: true
-  },
-  {
-    id: '2021-maxwell-conviction',
-    date: '2021-12-29',
-    title: 'Maxwell convicted',
-    description: 'Jury found Maxwell guilty on five of six counts including sex trafficking conspiracy.',
-    category: 'legal',
-    relatedPeople: ['ghislaine-maxwell'],
-    relatedLocations: ['sdny-court'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'SDNY trial record', date: '2021' }],
-    milestone: true
-  },
-  {
-    id: '2025-transparency-act',
-    date: '2025-11-19',
-    title: 'Epstein Files Transparency Act signed',
-    description: 'Law mandated release of unclassified records within 30 days; implementation disputes followed.',
-    category: 'political',
-    relatedPeople: [],
-    relatedLocations: ['washington-dc'],
-    evidenceTier: 'verified',
-    sources: [{ name: 'Congress.gov; DOJ releases', date: '2025-2026' }],
-    milestone: true
-  },
-  {
-    id: '2026-redactions',
-    date: '2026-01-30',
-    title: 'Large-volume release with redaction controversy',
-    description: 'Millions of pages released, but major portions were still heavily redacted or fully blacked out.',
-    category: 'institutional',
-    relatedPeople: [],
-    relatedLocations: ['doj-release-portal'],
-    evidenceTier: 'unresolved',
-    sources: [{ name: 'DOJ release portal; congressional criticism', date: '2025-2026' }]
-  }
+  { id: '1953-birth', date: '1953-01-20', title: 'Jeffrey Epstein born in Brooklyn', summary: 'Birth of central figure in the later trafficking case.', detail: 'Jeffrey Edward Epstein was born on January 20, 1953, in Brooklyn, New York.', category: 'background', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'standard' },
+  { id: '1973-dalton', date: '1973', title: 'Begins teaching at Dalton School', summary: 'Taught math without completed college degree.', detail: 'Records and reporting describe hiring at Dalton and subsequent Wall Street introductions.', category: 'background', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: ['manhattan-townhouse'], evidenceTier: 'verified', sources: s, significance: 'standard' },
+  { id: '1981-bear-stearns-exit', date: '1981-03-12', title: 'Resigns from Bear Stearns', summary: 'Departure followed internal review and period of SEC scrutiny.', detail: 'SEC deposition and reporting tie the period to compliance concerns.', category: 'background', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '1988-towers', date: '1988', title: 'Towers Financial fraud period overlaps Epstein consulting', summary: 'Hoffenberg later labeled Epstein as mastermind; no charge filed.', detail: 'Towers became one of the largest Ponzi schemes in SEC history, while Epstein served as paid consultant.', category: 'crime', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: [], evidenceTier: 'alleged', sources: s, significance: 'major' },
+  { id: '1991-wexner-poa', date: '1991-07', title: 'Wexner grants power of attorney', summary: 'Broad legal-financial control transferred to Epstein.', detail: 'Documents and reporting describe expansive authority over checks, hiring, borrowing, and property decisions.', category: 'background', relatedPeopleIds: ['les-wexner', 'jeffrey-epstein'], relatedLocationIds: ['manhattan-townhouse'], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2005-report', date: '2005-03', title: 'Palm Beach report starts modern criminal investigation', summary: 'Mother reports 14-year-old was paid for sexualized massage.', detail: 'Police identify approximately 36 minors over the next 13 months with similar descriptions.', category: 'crime', relatedPeopleIds: ['jeffrey-epstein', 'sarah-kellen'], relatedLocationIds: ['palm-beach-mansion'], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2005-search', date: '2005-10', title: 'Palm Beach search finds hidden cameras', summary: 'Cameras recovered; broader system reportedly removed before seizure.', detail: 'Police reported recovered covert cameras and missing surveillance infrastructure.', category: 'crime', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: ['palm-beach-mansion'], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2006-grand-jury', date: '2006-07-19', title: 'Palm Beach grand jury returns single prostitution count', summary: 'Proceeding lasted under four hours and heard limited testimony.', detail: 'Police-recommended child-sex-crime counts were not pursued; case was reframed around solicitation/prostitution.', category: 'institutional-failure', relatedPeopleIds: ['alexander-acosta'], relatedLocationIds: ['palm-beach-mansion'], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2007-npa', date: '2007-09-24', title: 'Non-Prosecution Agreement signed', summary: 'Secret federal-state arrangement grants immunity to named and unnamed co-conspirators.', detail: 'NPA shielded Epstein and broad co-conspirator set, including four named assistants; victims were not informed.', category: 'legal', relatedPeopleIds: ['alexander-acosta', 'jay-lefkowitz', 'ken-starr', 'alan-dershowitz', 'sarah-kellen', 'lesley-groff', 'nadia-marcinkova', 'adriana-ross'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2008-plea', date: '2008-06-30', title: 'State plea and lenient sentence', summary: 'Pleads guilty in Florida state court and receives 18-month sentence with unusual work release.', detail: 'Work release reportedly allowed up to 16 hours/day, six days/week outside custody.', category: 'legal', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: ['palm-beach-mansion'], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2009-release', date: '2009-07-22', title: 'Released after less than 13 months served', summary: 'Custodial term shorter than headline sentence.', detail: 'Release became central symbol of unequal justice claims.', category: 'legal', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2018-miami-herald', date: '2018-11-28', title: 'Miami Herald publishes “Perversion of Justice”', summary: 'Investigative series reignites national focus on case handling.', detail: 'Julie K. Brown reporting triggered renewed law-enforcement and public pressure.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2019-arrest', date: '2019-07-06', title: 'Federal arrest at Teterboro', summary: 'SDNY indicts Epstein for sex trafficking conspiracy.', detail: 'Arrest occurred after return from Paris; bail later denied.', category: 'legal', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: ['private-jets'], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2019-acosta-resigns', date: '2019-07-19', title: 'Acosta resigns as Labor Secretary', summary: 'Resignation followed renewed scrutiny of 2007 NPA.', detail: 'The handling of federal prosecution decisions became central to hearings and OPR review.', category: 'political', relatedPeopleIds: ['alexander-acosta'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2019-custody-death', date: '2019-08-10', title: 'Epstein dies in MCC New York custody', summary: 'Found hanged; official ruling: suicide by hanging.', detail: 'Subsequent OIG confirmed severe custodial failures and no evidence contradicting FBI criminality assessment.', category: 'death', relatedPeopleIds: ['jeffrey-epstein'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2020-opr', date: '2020-11', title: 'DOJ OPR finds “poor judgment” in NPA process', summary: 'No formal discipline despite serious criticism.', detail: 'Report concluded poor judgment but did not find corruption-based decision-making.', category: 'institutional-failure', relatedPeopleIds: ['alexander-acosta'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2020-maxwell-arrest', date: '2020-07-02', title: 'Ghislaine Maxwell arrested', summary: 'Federal prosecution proceeds in SDNY.', detail: 'Arrest in New Hampshire led to 2021 trial and 2022 sentencing.', category: 'legal', relatedPeopleIds: ['ghislaine-maxwell'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2021-maxwell-conviction', date: '2021-12-29', title: 'Maxwell convicted on 5 of 6 counts', summary: 'Jury convicts for trafficking conspiracy-related counts.', detail: 'Verdict established criminal accountability beyond Epstein himself.', category: 'legal', relatedPeopleIds: ['ghislaine-maxwell', 'annie-farmer'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2022-maxwell-sentencing', date: '2022-06-28', title: 'Maxwell sentenced to 20 years', summary: 'Judge imposes 240-month sentence and fine.', detail: 'Sentence later affirmed by Second Circuit; SCOTUS denied review in 2025.', category: 'legal', relatedPeopleIds: ['ghislaine-maxwell'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2023-oig-custody', date: '2023-06-27', title: 'DOJ OIG releases MCC failure report', summary: 'Confirms repeated dereliction by correctional staff and camera failures.', detail: 'Guards falsified rounds; no replacement cellmate assigned; monitoring systems deficient.', category: 'institutional-failure', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2023-bank-settlements', date: '2023-06', title: 'Major bank settlements reached', summary: 'JPMorgan and Deutsche Bank settlements exceed $440M combined.', detail: 'Separate class and territorial settlements addressed facilitation and compliance failures.', category: 'legal', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2024-unseal', date: '2024-01', title: 'Giuffre v. Maxwell unsealing wave begins', summary: 'Thousands of pages and over 150 names are unsealed.', detail: 'Judge Preska order drove broad public-record expansion.', category: 'transparency', relatedPeopleIds: ['bill-clinton', 'donald-trump', 'prince-andrew', 'ehud-barak', 'bill-gates', 'noam-chomsky'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2025-transparency-act', date: '2025-11-19', title: 'Epstein Files Transparency Act becomes law', summary: 'Congress mandates rapid release of unclassified records.', detail: 'House passed 427-1; Senate cleared by unanimous consent.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2025-no-client-list-memo', date: '2025-07', title: 'DOJ/FBI memo says no client list and no credible blackmail proof', summary: 'Memo generated major criticism from survivors and transparency advocates.', detail: 'Memo conclusions were contested by testimonial and documentary context in broader records.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'unresolved', sources: s, significance: 'major' },
+  { id: '2025-footage-dispute', date: '2025', title: 'Modified surveillance footage controversy', summary: 'Release presented as raw was reported to contain a missing segment.', detail: 'Questions persisted over chain-of-custody and completeness of custody footage.', category: 'institutional-failure', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'unresolved', sources: s, significance: 'major' },
+  { id: '2025-giuffre-death', date: '2025-04-25', title: 'Virginia Giuffre dies by suicide', summary: 'Leading survivor-advocate dies at age 41 in Australia.', detail: 'Her memoir and advocacy legacy shaped public testimony and survivor organizing.', category: 'victim', relatedPeopleIds: ['virginia-giuffre'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2026-doj-mass-release', date: '2026-01-30', title: 'DOJ releases ~3.5 million pages', summary: 'Largest release to date includes images/videos but remains heavily redacted in key areas.', detail: 'Critics highlighted redaction flaws, accidental victim exposure, and unresolved withheld categories.', category: 'transparency', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2026-release-errors', date: '2026-01', title: 'Release controversies include exposed victim identifiers', summary: 'Public reporting described major publication errors in initial releases.', detail: 'Bipartisan lawmakers sought IG review citing legality and victim-safety concerns.', category: 'institutional-failure', relatedPeopleIds: [], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'critical' },
+  { id: '2026-house-depositions', date: '2026-02', title: 'House Oversight deposes key figures', summary: 'Depositions include Maxwell, Wexner, Indyke, Kahn, and former officials.', detail: 'Committee expanded toward banking and institutional accountability lines.', category: 'political', relatedPeopleIds: ['ghislaine-maxwell', 'les-wexner', 'darren-indyke', 'richard-kahn', 'bill-clinton'], relatedLocationIds: [], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2026-zorro-search', date: '2026-03-09', title: 'First law-enforcement search of Zorro Ranch', summary: 'New Mexico investigators execute search after reopening state inquiry.', detail: 'Search found no human remains but marked first direct criminal-procedure action at site.', category: 'legal', relatedPeopleIds: [], relatedLocationIds: ['zorro-ranch'], evidenceTier: 'verified', sources: s, significance: 'major' },
+  { id: '2026-wexner-lawsuit', date: '2026-04-06', title: 'Survivors file civil lawsuit against Wexner', summary: 'Complaint alleges major financial support to Epstein operation.', detail: 'Lawsuit in New York Supreme Court alleges $200M+ funding role.', category: 'legal', relatedPeopleIds: ['les-wexner'], relatedLocationIds: [], evidenceTier: 'alleged', sources: s, significance: 'major' }
 ];

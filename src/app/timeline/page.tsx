@@ -3,7 +3,7 @@ import { PageShell } from '@/components/sections/PageShell';
 import { TimelineClient } from '@/components/sections/TimelineClient';
 
 export const metadata: Metadata = {
-  title: 'Timeline | Don’t Forget',
+  title: 'Timeline | The Epstein Files',
   description: 'Chronological, evidence-tiered timeline of key events in the Epstein case.'
 };
 
